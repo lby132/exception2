@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-public class ApiExceptionV2Controller {
+public class ApiExceptionV3Controller {
 
-    @GetMapping("/api2/members/{id}")
-    public MemberDto getMember(@PathVariable("id") String id) {
+    @GetMapping("/api3/members/{id}")
+    public ApiExceptionV2Controller.MemberDto getMember(@PathVariable("id") String id) {
 
         if (id.equals("ex")) {
             throw new RuntimeException("잘못된 사용자");
@@ -25,7 +25,7 @@ public class ApiExceptionV2Controller {
             throw new UserException("사용자 오류");
         }
 
-        return new MemberDto(id, "hello " + id);
+        return new ApiExceptionV2Controller.MemberDto(id, "hello " + id);
     }
 
     @Data
